@@ -2,29 +2,50 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-05-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "dnsLabelPrefix": {
-      "value": "GEN-UNIQUE"
+    "location": {
+      "value": "West US"
+    },
+    "dnsNameLabel": {
+      "value": ""
     },
     "publicIPType": {
       "value": "Static"
     },
-    "adminUsername": {
-      "value": "userName"
-    },
-    "adminPassword": {
-      "value": "GEN-PASSWORD"
-    },
-    "sshKeyData": {
-      "value": "GEN-SSH-PUB-KEY"
-    },
-    "sshStorageAccountName": {
-      "value": "storageAccountName"
-    },
-    "sshStorageAccountKey": {
-      "value": "storageAccountKey"
+    "numberOfVMS": {
+      "value": 3
     },
     "serversRole": {
-      "value": "serversRole"
+      "value": ""
+    },
+    "serversPurpose": {
+      "value": "DEV"
+    },
+    "storageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "newStorageAccountName": {
+      "value": ""
+    },
+    "vmSize": {
+      "value": "Standard_D1"
+    },
+    "linuxFileSystem": {
+      "value": "ext4"
+    },
+    "adminUserName": {
+      "value": ""
+    },
+    "adminPassword": {
+      "value": ""
+    },
+    "sshKeyData": {
+      "value": ""
+    },
+    "customScriptConfigStorageAccountName": {
+      "value": ""
+    },
+    "customScriptConfigStorageAccountKey": {
+      "value": ""
     }
   }
 }
