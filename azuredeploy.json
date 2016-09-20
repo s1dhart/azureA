@@ -268,7 +268,7 @@
             "properties": {
               "frontendIPConfiguration": { "id": "[variables('lbFEConfigRef')]" },
               "protocol": "tcp",
-              "frontendPort": "[concat(variables('sshNatRuleFrontEndPort'),'0')]",
+              "frontendPort": "[variables('sshNatRuleFrontEndPort')]",
               "backendPort": "[variables('sshNatRuleBackEndPort')]",
               "enableFloatingIP": false
             }
