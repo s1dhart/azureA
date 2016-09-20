@@ -16,7 +16,7 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_DS2",
+      "defaultValue": "Standard_A3",
       "allowedValues": [
         "Standard_D1",
         "Standard_DS1",
@@ -67,14 +67,14 @@
     },
     "serversPurpose": {
       "type": "string",
-      "defaultValue": "DEV",
+      "defaultValue": "PERF",
       "metadata": {
         "description": "Servers purpose, for instance development, test, pre-production, production. A tag will be created with the provided value"
       }
     },
     "numberOfVms": {
       "type": "int",
-      "defaultValue": 3,
+      "defaultValue": 2,
       "metadata": {
         "description": "Number of VMs. The template will create N number of identical VMs"
       }
@@ -143,10 +143,10 @@
     "subnet1Prefix": "10.0.1.0/24",
     "subnet2Prefix": "10.0.2.0/24",
     "publicIPName": "VIP01",
-    "vmNamePattern": "ANS",
+    "vmNamePattern": "ECL",
     "VMIPAddressStart": "10.0.2.2",
-    "vmNICNamePattern": "ANS",
-    "loadBalancerName": "PLB",
+    "vmNICNamePattern": "ECLNIC",
+    "loadBalancerName": "ECLNLB",
     "sshNatRuleFrontEndPort": "6400",
     "sshNatRuleBackEndPort": "22",
     "publicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPName'))]",
