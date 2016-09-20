@@ -1,4 +1,5 @@
 {
+
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
@@ -183,8 +184,7 @@
     "currentEnvironmentSettings": "[variables('ansibleVmTypes')[parameters('storageAccountType')]]",
     "ansibleVmType": "[variables('currentEnvironmentSettings').vmSize]",
     "newStorageAccountName": "[concat(uniquestring(resourceGroup().id), 'stg')]",
-    "storageRef": "[concat('Microsoft.Storage/storageAccounts/', variables('newStorageAccountName'))]"
-  },
+    "storageRef": "[concat('Microsoft.Storage/storageAccounts/', variables('newStorageAccountName'))]",
     "DBVmTypes": {
       "Standard_LRS": {
         "vmSize": "Standard_D1"
@@ -276,8 +276,7 @@
           }
 
         ]
-      }
-    },
+      },
     {
       "type": "Microsoft.Compute/availabilitySets",
       "name": "[variables('availabilitySetName')]",
@@ -328,8 +327,7 @@
 
           }
         ]
-      }
-    },
+      },
     {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Compute/virtualMachines",
@@ -429,7 +427,7 @@
 		"autoUpgradeMinorVersion": true,
 		"fileUris": ["https://raw.githubusercontent.com/s1dhart/azureA/master/install_ecl.sh"],
 		"commandToExecute": "bash install_ecl.sh"
-      }
+      }}
     },
     {
       "apiVersion": "[variables('apiVersion')]",
@@ -455,8 +453,7 @@
 
           }
         ]
-      }
-    },
+      },
     {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Compute/virtualMachines",
@@ -633,8 +630,7 @@
 		"fileUris": ["https://raw.githubusercontent.com/s1dhart/azuretest/master/PGconfigure.sh"],
 		"commandToExecute": "bash PGconfigure.sh" 
       }
-    }
-}],
+    }}],
 
   "outputs": {
     "sshResourceURL": {
@@ -642,4 +638,4 @@
       "type": "string"
     }
   }
-}
+  }
