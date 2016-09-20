@@ -10,7 +10,7 @@
         "Standard_LRS"
       ],
       "metadata": {
-        "description": "Storage account Type. Standard_LRS or Premium_LRS"
+        "description": "Storage account Type. Standard_LRS "
       }
     },
     "vmSize": {
