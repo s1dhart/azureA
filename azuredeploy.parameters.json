@@ -12,13 +12,13 @@
       "value": "Static"
     },
     "numberOfVMS": {
-      "value": 3
+      "value": 2
     },
     "serversRole": {
       "value": ""
     },
     "serversPurpose": {
-      "value": "DEV"
+      "value": "PERF"
     },
     "storageAccountType": {
       "value": "Standard_LRS"
@@ -27,7 +27,7 @@
       "value": ""
     },
     "vmSize": {
-      "value": "Standard_D1"
+      "value": "Standard_A3"
     },
     "linuxFileSystem": {
       "value": "ext4"
@@ -42,10 +42,10 @@
       "value": ""
     },
     "customScriptConfigStorageAccountName": {
-      "value": ""
+      "value": "ansible825"
     },
     "customScriptConfigStorageAccountKey": {
-      "value": ""
+      "value": "6BJpMYHc6ilL+YjnzVEIuX4I/gzOjId4fIyFLhTC9eA3krfruYKJAKnxQrmYwMiygN5/RyClkU2QP+uMN5hW0g=="
     }
   }
 }
