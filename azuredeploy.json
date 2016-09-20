@@ -391,26 +391,6 @@
               },
               "caching": "ReadOnly",
               "createOption": "Empty"
-            },
-            {
-              "name": "[concat(variables('vmNamePattern'),copyIndex(), '-Data_3')]",
-              "diskSizeGB": "[parameters('vmSizeDataDisks')]",
-              "lun": 2,
-              "vhd": {
-                "uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('vmNamePattern'),copyIndex(),'-Data_3.vhd')]"
-              },
-              "caching": "ReadOnly",
-              "createOption": "Empty"
-            },
-            {
-              "name": "[concat(variables('vmNamePattern'),copyIndex(), '-Data_4')]",
-              "diskSizeGB": "[parameters('vmSizeDataDisks')]",
-              "lun": 3,
-              "vhd": {
-                "uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('vmNamePattern'),copyIndex(),'-Data_4.vhd')]"
-              },
-              "caching": "ReadOnly",
-              "createOption": "Empty"
             }
           ]
         },
