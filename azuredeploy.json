@@ -273,9 +273,9 @@
               "enableFloatingIP": false
             }
           }
-
-        ]
-      },
+       ]
+    }
+    },
     {
       "type": "Microsoft.Compute/availabilitySets",
       "name": "[variables('availabilitySetName')]",
@@ -326,6 +326,7 @@
 
           }
         ]
+    }
     },
     {
       "apiVersion": "[variables('apiVersion')]",
@@ -452,6 +453,7 @@
 
           }
         ]
+    }
     },
     {
       "apiVersion": "[variables('apiVersion')]",
