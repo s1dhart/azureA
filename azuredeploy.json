@@ -424,7 +424,6 @@
 		"typeHandlerVersion": "2.0",
 		"autoUpgradeMinorVersion": true,
         "settings": {
-		"autoUpgradeMinorVersion": true,
 		"fileUris": ["https://raw.githubusercontent.com/s1dhart/azureA/master/install_ecl.sh"],
 		"commandToExecute": "bash install_ecl.sh"
       }}
