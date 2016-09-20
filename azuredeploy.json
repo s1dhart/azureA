@@ -1,5 +1,4 @@
 {
-
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
@@ -327,7 +326,7 @@
 
           }
         ]
-      },
+    },
     {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Compute/virtualMachines",
@@ -453,7 +452,7 @@
 
           }
         ]
-      },
+    },
     {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Compute/virtualMachines",
@@ -531,7 +530,7 @@
         }
       }
     },
-      {
+    {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "DBServer",
@@ -550,7 +549,8 @@
               "subnet": { "id": "[variables('subnetBackEndRef')]" },
               "loadBalancerInboundNatRules": [
 			   {"id": "[concat(variables('loadBalancerRef'),'/inboundNatRules/sshToDBNAT')]" }
-              ]}}]}},
+              ]}}]}
+},
     {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Compute/virtualMachines",
@@ -625,7 +625,8 @@
 		"fileUris": ["https://raw.githubusercontent.com/s1dhart/azuretest/master/PGconfigure.sh"],
 		"commandToExecute": "bash PGconfigure.sh" 
       }
-    }}],
+    }}
+],
 	
   "outputs": {
     "sshResourceURL": {
