@@ -4,7 +4,7 @@ cd /home/sid
 sudo java \
 -DTRACE=true \
 -DDEBUG=true \
--Dinput.target.db.server.hostname=DBServer \
+-Dinput.target.db.server.hostname=Ecl_DB \
 -Dinput.target.db.server.dbname_schema=live \
 -Dinput.target.db.server.port=1999 \
 -Dinput.target.install.environment=live \
