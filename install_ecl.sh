@@ -1,4 +1,5 @@
 #!/bin/bash
+Sudo apt-get install openjdk-7-jre
 cd /home/sid
 sudo java \
 -DTRACE=true \
