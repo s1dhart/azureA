@@ -142,11 +142,11 @@
     "subnet1Prefix": "10.0.1.0/24",
     "subnet2Prefix": "10.0.2.0/24",
     "publicIPName": "VIP01",
-    "vmNamePattern": "ECL",
+    "vmNamePattern": "EclApp",
     "VMIPAddressStart": "10.0.2.2",
     "vmNICNamePattern": "ECLNIC",
     "loadBalancerName": "ECLNLB",
-    "sshNatRuleFrontEndPort": "6400",
+    "sshNatRuleFrontEndPort": "22",
     "sshNatRuleBackEndPort": "22",
     "publicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPName'))]",
     "NICipconfig": "ipCnfgBE",
@@ -186,7 +186,16 @@
     "newStorageAccountName": "[concat(uniquestring(resourceGroup().id), 'stg')]",
     "storageRef": "[concat('Microsoft.Storage/storageAccounts/', variables('newStorageAccountName'))]"
   },
-
+    "DBVmTypes": {
+      "Standard_LRS": {
+        "vmSize": "Standard_D1"
+      }
+    },
+    "currentEnvironmentSettings": "[variables('DBVmTypes')[parameters('storageAccountType')]]",
+    "DBVmType": "[variables('currentEnvironmentSettings').vmSize]",
+    "newStorageAccountName": "[concat(uniquestring(resourceGroup().id), 'stg')]",
+    "storageRef": "[concat('Microsoft.Storage/storageAccounts/', variables('newStorageAccountName'))]"
+  },
   "resources": [
     {
       "apiVersion": "[variables('apiVersion')]",
@@ -511,6 +520,112 @@
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "BlackBox/installBBG",
+      "apiVersion": "[variables('apiVersion')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "VMExtensionsLoop"
+      ],
+      "properties": {
+        "publisher": "Microsoft.OSTCExtensions",
+        "type": "CustomScriptForLinux",
+        "typeHandlerVersion": "1.4",
+        "settings": {
+          "fileUris": [
+            "[variables('customScriptAnsibleUrl')]",
+            "[variables('ansiblePlaybookUrl')]",
+            "[variables('pythonAzureScriptUrl')]"
+          ],
+          "commandToExecute": "[concat(variables('customScriptAnsibleCommand'),variables('customScriptAnsibleParameters'),' -a ', parameters('sshStorageAccountName'),' -k ', parameters('sshStorageAccountKey'))]",
+          "protectedSettings": { }
+        }
+      }
+    },
+      {
+      "apiVersion": "[variables('apiVersion')]",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "DBServer",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[variables('vnetRef')]",
+        "[variables('loadBalancerRef')]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "[variables('NICipconfig')]",
+            "properties": {
+              "privateIPAllocationMethod": "Static",
+              "privateIPAddress": "[concat(variables('VMIPAddressStart'),parameters('numberOfVms'))]",
+              "subnet": { "id": "[variables('subnetBackEndRef')]" },
+              "loadBalancerInboundNatRules": [
+                { "id": "[concat(variables('loadBalancerRef'),'/inboundNatRules/sshToDBNAT')]" }
+              ]
+            }
+
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "[variables('apiVersion')]",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "EclDB",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "ServerRole": "Database Server",
+        "ServerEnvironment": "[parameters('serversPurpose')]"
+      },
+      "dependsOn": [
+        "[variables('storageRef')]",
+        "[resourceId('Microsoft.Network/networkInterfaces','DBServer')]",
+        "[concat('Microsoft.Compute/availabilitySets/', variables('availabilitySetName'))]",
+        "VMsLoop"
+      ],
+      "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets',variables('availabilitySetName'))]"
+        },
+        "hardwareProfile": {
+          "vmSize": "[variables('DBVMType')]"
+        },
+        "osProfile": {
+          "computerName": "EclDB",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPassword')]",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": "false"
+          }
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "14.04.3-LTS",
+            "version": "latest"
+          },
+          "osDisk": {
+            "name": "EclDB-OS",
+            "vhd": {
+              "uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/AnsibleController-OS.vhd')]"
+            },
+            "caching": "ReadWrite",
+            "createOption": "FromImage"
+          },
+          "dataDisks": [
+          ]
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces','DBServer')]"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "DBServer/installPG",
       "apiVersion": "[variables('apiVersion')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
