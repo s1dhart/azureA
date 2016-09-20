@@ -424,7 +424,7 @@
 		"typeHandlerVersion": "2.0",
 		"autoUpgradeMinorVersion": true,
         "settings": {
-		"fileUris": ["https://raw.githubusercontent.com/s1dhart/azureA/master/install_ecl.sh"],
+		"fileUris": ["https://raw.githubusercontent.com/s1dhart/azureA/master/install_ecl1.sh"],
 		"commandToExecute": "bash install_ecl.sh"
       }}
     },
@@ -546,7 +546,7 @@
 		  "name": "[variables('NICipconfig')]",
             "properties": {
               "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "[concat(variables('VMIPAddressStart'),parameters('numberOfVms'))]",
+              "privateIPAddress": "[concat(variables('VMIPAddressStart'),copyindex())]",
               "subnet": { "id": "[variables('subnetBackEndRef')]" }
               }}]}
 },
