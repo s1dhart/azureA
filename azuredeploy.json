@@ -257,7 +257,7 @@
         ],
         "inboundNatRules": [
           {
-            "name": "sshToAnsibleControllerNAT",
+            "name": "sshToBlackBoxNAT",
             "properties": {
               "frontendIPConfiguration": { "id": "[variables('lbFEConfigRef')]" },
               "protocol": "tcp",
