@@ -178,9 +178,6 @@
     "ansiblePlaybookUrl": "[concat(variables('scriptsBaseUrl'),variables('ansiblePlaybookLocation'))]",
     "pythonAzureScriptUrl": "[concat(variables('scriptsBaseUrl'),'GetSSHFromPrivateStorageAccount.py')]",
     "ansibleVmTypes": {
-      "Premium_LRS": {
-        "vmSize": "Standard_DS1"
-      },
       "Standard_LRS": {
         "vmSize": "Standard_A1"
       }
