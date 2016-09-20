@@ -40,7 +40,7 @@
 
     "vmSizeDataDisks": {
       "type": "int",
-      "defaultValue": 120,
+      "defaultValue": 10,
       "metadata": {
         "description": "Data disks Size in GBs"
       }
@@ -72,7 +72,7 @@
     },
     "numberOfVms": {
       "type": "int",
-      "defaultValue": 2,
+      "defaultValue": 1,
       "metadata": {
         "description": "Number of VMs. The template will create N number of identical VMs"
       }
