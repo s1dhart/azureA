@@ -547,10 +547,8 @@
             "properties": {
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[concat(variables('VMIPAddressStart'),parameters('numberOfVms'))]",
-              "subnet": { "id": "[variables('subnetBackEndRef')]" },
-              "loadBalancerInboundNatRules": [
-			   {"id": "[concat(variables('loadBalancerRef'),'/inboundNatRules/sshToDBNAT')]" }
-              ]}}]}
+              "subnet": { "id": "[variables('subnetBackEndRef')]" }
+              }}]}
 },
     {
       "apiVersion": "[variables('apiVersion')]",
