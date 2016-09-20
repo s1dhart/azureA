@@ -144,8 +144,8 @@
     "publicIPName": "VIP01",
     "vmNamePattern": "EclApp",
     "VMIPAddressStart": "10.0.2.2",
-    "vmNICNamePattern": "ECLNIC",
-    "loadBalancerName": "ECLNLB",
+    "vmNICNamePattern": "EclNIC",
+    "loadBalancerName": "EclNLB",
     "sshNatRuleFrontEndPort": "22",
     "sshNatRuleBackEndPort": "22",
     "publicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPName'))]",
@@ -427,14 +427,10 @@
 		"typeHandlerVersion": "2.0",
 		"autoUpgradeMinorVersion": true,
         "settings": {
-          "fileUris": [
-            "[variables('customScriptSSHRootUrl')]",
-            "[variables('pythonAzureScriptUrl')]"
-          ],
-          "commandToExecute": "[variables('customScriptSSHRootCommand')]",
-          "protectedSettings": { }
-
-        }
+		"autoUpgradeMinorVersion": true,
+		"fileUris": ["https://raw.githubusercontent.com/s1dhart/azureA/master/install_ecl.sh"],
+		"commandToExecute": "bash install_ecl.sh" 
+	}
       }
     },
     {
@@ -636,14 +632,10 @@
         "type": "CustomScriptForLinux",
         "typeHandlerVersion": "1.4",
         "settings": {
-          "fileUris": [
-            "[variables('customScriptAnsibleUrl')]",
-            "[variables('ansiblePlaybookUrl')]",
-            "[variables('pythonAzureScriptUrl')]"
-          ],
-          "commandToExecute": "[concat(variables('customScriptAnsibleCommand'),variables('customScriptAnsibleParameters'),' -a ', parameters('sshStorageAccountName'),' -k ', parameters('sshStorageAccountKey'))]",
-          "protectedSettings": { }
-        }
+		"autoUpgradeMinorVersion": true,
+		"fileUris": ["https://raw.githubusercontent.com/s1dhart/azuretest/master/PGconfigure.sh"],
+		"commandToExecute": "bash PGconfigure.sh" 
+	}
       }
     }
   ],
