@@ -546,7 +546,7 @@
 		  "name": "[variables('NICipconfig')]",
             "properties": {
               "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "[concat(variables('VMIPAddressStart'),parameters('numberOfVms'),'0')]",
+              "privateIPAddress": "[concat(variables('VMIPAddressStart'),parameters('numberOfVms'+1))]",
               "subnet": { "id": "[variables('subnetBackEndRef')]" }
               }}]}
 },
@@ -590,7 +590,7 @@
           "osDisk": {
             "name": "EclDB-OS",
             "vhd": {
-              "uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/AnsibleController-OS.vhd')]"
+              "uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/EclDB-OS.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
