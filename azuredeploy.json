@@ -546,7 +546,7 @@
 		  "name": "[variables('NICipconfig')]",
             "properties": {
               "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "[concat(variables('VMIPAddressStart'),copyindex())]",
+              "privateIPAddress": "[concat(variables('VMIPAddressStart'),parameters('numberOfVms'),'0')]",
               "subnet": { "id": "[variables('subnetBackEndRef')]" }
               }}]}
 },
