@@ -48,7 +48,7 @@ function log()
 
 
 #---PARSE AND VALIDATE PARAMETERS---
-if [ $# -ne 12 ]; then
+if [ $# -ne 1 ]; then
     log "ERROR:Wrong number of arguments specified. Parameters received $#. Terminating the script."
     usage
     exit 1
