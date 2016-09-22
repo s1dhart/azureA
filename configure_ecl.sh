@@ -114,8 +114,8 @@ function install_ansible_ubuntu()
 
  function get_sshkeys()
  {
-    log "INFO:Retrieving ssh keys from Azure Storage"
-    pip install azure-storage
+    # log "INFO:Retrieving ssh keys from Azure Storage"
+    # pip install azure-storage
 
     # Download both Private and Public Key
     python GetSSHFromPrivateStorageAccount.py ${SSH_AZ_ACCOUNT_NAME} ${SSH_AZ_ACCOUNT_KEY} eclipse-installer-1.3.0-RELEASE.jar
