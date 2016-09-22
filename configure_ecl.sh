@@ -26,33 +26,6 @@ SSH_AZ_ACCOUNT_NAME=''
 SSH_AZ_ACCOUNT_KEY=''
 MOUNTPOINT='/datadrive'
 
- function usage()
- {
-    echo "INFO:"
-    echo "Usage: configure-ansible.sh [-i IP_ADDRESS_SPACE ] [-n NUMBER_OF_NODES ] [-r CONFIGURE_RAID ] [-f FILE_SYSTEM] "
-    echo "The -i (ipAddressSpace) parameters specifies the starting IP space for the vms.For instance if you specify 10.0.2.2, and 3 nodes, the script will find for the VMS 10.0.2.20, 10.0.2.21,10.0.2.22.Plase note that Azure reserves the first 4 IPs, so you will have to specify an IP space in which IP x.x.x0 is available"
-    echo "The -n (numberOfNodes) parameter specifies the number of VMs"
-    echo "The -r (configureRAID) parameter specifies whether you want to create a RAID with all the available data disks.Allowed values : true or false"
-    echo "The -f (fileSystem) parameter specifies the file system you want to use.Allowed values : ext4 or xfs"
-    echo "The -a (azureStorageAccountName) parameter specifies the name of the storage account that contains the private keys"
-    echo "The -k (azureStorageAccountKey) parameter specifies the key of the private storage account that contains the private keys"
-
-}
-
-function log()
-{
-    # If you want to enable this logging add a un-comment the line below and add your account id
-    #curl -X POST -H "content-type:text/plain" --data-binary "${HOSTNAME} - $1" https://logs-01.loggly.com/inputs/<key>/tag/es-extension,${HOSTNAME}
-    echo "$1"
-}
-
-
-#---PARSE AND VALIDATE PARAMETERS---
-if [ $# -ne 1 ]; then
-    log "ERROR:Wrong number of arguments specified. Parameters received $#. Terminating the script."
-    usage
-    exit 1
-fi
 
 #-- while getopts :i:n:r:f:a:k: optname; do
 
@@ -245,4 +218,5 @@ InitializeVMs()
 
 }
 
-InitializeVMs
+# InitializeVMs
+ get_sshkeys
