@@ -9,7 +9,7 @@ blob_service = BlockBlobService(account_name=str(sys.argv[1]), account_key=str(s
 
 
 blob = blob_service.get_blob_to_path(
-    'ssh',
+    'customscript',
     str(sys.argv[3]),
     os.path.join(os.getcwd(),str(sys.argv[3])),
     max_connections=8
