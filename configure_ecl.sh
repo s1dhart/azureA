@@ -13,11 +13,11 @@
 #########################################################
 
 #---BEGIN VARIABLES---
-IP_ADDRESS_SPACE=''
-NUMBER_OF_NODES=''
+IP_ADDRESS_SPACE='10.0.2.20'
+NUMBER_OF_NODES='1'
 NODE_LIST_IPS=()
-CONFIGURE_RAID=''
-FILE_SYSTEM=''
+CONFIGURE_RAID='1'
+FILE_SYSTEM='ext4'
 USER_NAME=''
 USER_PASSWORD=''
 TEMPLATE_ROLE='ansible'
@@ -54,51 +54,10 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-while getopts :i:n:r:f:a:k: optname; do
-    log "INFO:Option $optname set with value ${OPTARG}"
-  case $optname in
-    i) # IP address space
-      IP_ADDRESS_SPACE=${OPTARG}
-      ;;
-    n) # Number of VMS
-      NUMBER_OF_NODES=${OPTARG}
-      IDX=${START_IP_INDEX}
-      while [ "${IDX}" -lt "${NUMBER_OF_NODES}" ];
-      do
-        NODE_LIST_IPS[$IDX]="${IP_ADDRESS_SPACE}${IDX}"
-        IDX=$((${IDX} + 1))
-      done
-      ;;
-    r) # Configure RAID
-      CONFIGURE_RAID=${OPTARG}
-      if [[ "${CONFIGURE_RAID}" != "true" &&  "${CONFIGURE_RAID}" != "false" ]] ; then
-          log "ERROR:Configure RAID (-r) value ${CONFIGURE_RAID} not allowed"
-          usage
-          exit 1
-      fi
-      ;;
-    f) # File system  : ext4 or xfs
-      FILE_SYSTEM=${OPTARG}
-      if [[ "${FILE_SYSTEM}" != "ext4" &&  "${FILE_SYSTEM}" != "xfs" ]] ; then
-          log "ERROR:File system (-f) ${FILE_SYSTEM} not allowed"
-          usage
-          exit 1
-      fi
-      ;;
-    a) # Azure Private Storage Account Name- SSH Keys
-      SSH_AZ_ACCOUNT_NAME=${OPTARG}
-      ;;
-    k) # Azure Private Storage Account Key - SSH Keys
-      SSH_AZ_ACCOUNT_KEY=${OPTARG}
-      ;;
-    \?) #Invalid option - show help
-      log "ERROR:Option -${BOLD}$OPTARG${NORM} not allowed."
-      usage
-      exit 1
-      ;;
-  esac
-done
+#-- while getopts :i:n:r:f:a:k: optname; do
 
+
+###
 
 
 function check_OS()
@@ -263,7 +222,7 @@ function configure_ssh()
 
 InitializeVMs()
 {
-    check_OS
+    # check_OS
 
     if [[ "${DIST}" == "Ubuntu" ]];
     then
