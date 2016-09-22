@@ -4,7 +4,7 @@ sudo apt-get update
 sudo apt-get install openjdk-7-jre
 #download postgresql source code
 wget https://support.olmsystems.com/olm/application_store/admin/downloads/Eclipse/eclipse-installer-1.3.0-RELEASE.jar.gz
-sudo java \
+java \
 -DTRACE=true \
 -DDEBUG=true \
 -Dinput.target.db.server.hostname=10.0.2.40 \
