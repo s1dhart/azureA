@@ -10,6 +10,7 @@ sudo locale-gen en_GB.utf8
 #create postgres user for postgresql
 ##
 sudo mkdir -p /opt/pgsql_data
+sudo mkdir -p /opt/PostgreSQL
 sudo useradd -m postgres
 sudo chown -R postgres.postgres /opt/pgsql_data
 sudo chown -R postgres.postgres /opt/PostgreSQL
