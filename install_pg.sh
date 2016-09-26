@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#  Download PG 
 wget http://get.enterprisedb.com/postgresql/postgresql-9.5.4-1-linux-x64.run
 chmod 755 postgresql-9.5.4-1-linux-x64.run
 ##
