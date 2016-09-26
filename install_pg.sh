@@ -27,7 +27,7 @@ EOFF
 # Install PG
 ./postgresql-9.5.4-1-linux-x64.run --mode unattended --prefix /opt/PostgreSQL/9.5 --datadir /opt/PostgreSQL/9.5/data --superpassword password --serverport 5432 --locale en_GB.utf8
 # Create DB
-sudo su - postgres -c "createdb -h localhost -p 5432 -U postgres ecl_test"
-sudo su - postgres -c "echo \"CREATE USER ecl_test WITH PASSWORD 'ecl_test';\" | PGPASSWORD=password psql -U postgres"
+sudo su - postgres -c "echo \"CREATE ROLE ecl_test LOGIN PASSWORD 'ecl_test' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION VALID UNTIL 'infinity';\" | PGPASSWORD=password psql -U postgres"
+sudo su - postgres -c "echo \"CREATE DATABASE ecl_test OWNER ecl_test ENCODING 'UTF8' LC_COLLATE 'en_GB.utf8' LC_CTYPE 'en_GB.utf8';\" | PGPASSWORD=password psql -U postgres"
 sudo printf "\nhost    all             all             10.0.2.40/24            trust\n" >> /opt/PostgreSQL/9.5/pg_hba.conf
 sudo service postgresql-9.5 restart
