@@ -30,3 +30,4 @@ EOFF
 sudo su - postgres -c "createdb -h localhost -p 5432 -U postgres ecl_test"
 sudo su - postgres -c "echo \"CREATE USER ecl_test WITH PASSWORD 'ecl_test';\" | PGPASSWORD=password psql -U postgres"
 sudo printf "\nhost    all             all             10.0.2.40/24            trust\n" >> /opt/PostgreSQL/9.5/pg_hba.conf
+sudo service postgresql-9.5 restart
