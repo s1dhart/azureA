@@ -7,13 +7,12 @@ sudo /usr/share/webmin/install-module.pl webmin_nginx.gz
 sudo service nginx stop 
 sudo tar Pxvzf nginx-conf.tar.gz 
 sudo openssl dhparam -out /etc/nginx/ssl/dhparams.pem 2048 
-sudo ./bbgadmin.sh testpass 
 sudo service nginx start 
-sudo cp /etc/nginx/sites-available/eclipse_template /etc/nginx/sites-available/$1
+sudo cp /etc/nginx/sites-available/_eclipse_template /etc/nginx/sites-available/perf
 cd /etc/nginx/sites-available
-sudo sed -i s/443/$ssl/g $1
-sudo sed -i s/8011/$ajp/g $1
-sudo sed -i s/sidenv1/$1/g $1
+sudo sed -i s/192.168.1.10/10.0.2.20/g perf
+sudo sed -i s/ENV.fq.dn/perftest.westeurope.cloudapp.azure.com/g perf
+sudo sed -i s/ENV/perf/g perf
 cd /etc/nginx/sites-enabled
-sudo ln -s /etc/nginx/sites-available/$1 $1
+sudo ln -s /etc/nginx/sites-available/perf perf
 sudo service nginx reload
