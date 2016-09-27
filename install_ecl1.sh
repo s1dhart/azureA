@@ -20,4 +20,4 @@ jdk1.8.0_101/bin/java \
 -jar eclipse-installer-1.3.0-RELEASE.jar \
 -console \
 -options-system
-start olm_test_eclipse
+start olm_perf_eclipse
