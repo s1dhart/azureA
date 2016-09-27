@@ -11,7 +11,7 @@ jdk1.8.0_101/bin/java \
 -Dinput.target.db.server.port=5432 \
 -Dinput.target.tomcat.http.port=8080 \
 -Dinput.target.ajp.port=8009 \
--Dinput.target.install.environment=test \
+-Dinput.target.install.environment=perf \
 -Dinput.target.db.username=ecl_test \
 -Dinput.target.db.password=ecl_test \
 -Dinput.target.db.platform=POSTGRESQL \
