@@ -12,7 +12,7 @@ sudo service nginx start
 sudo cp /etc/nginx/sites-available/_eclipse_template /etc/nginx/sites-available/perf
 cd /etc/nginx/sites-available
 sudo sed -i s/192.168.1.10/10.0.2.20/g perf
-sudo sed -i s/ENV.fq.dn/perftest.westeurope.cloudapp.azure.com/g perf
+sudo sed -i s/ENV.fq.dn/perftesting.westeurope.cloudapp.azure.com/g perf
 sudo sed -i s/ENV/perf/g perf
 cd /etc/nginx/sites-enabled
 sudo ln -s /etc/nginx/sites-available/perf perf
