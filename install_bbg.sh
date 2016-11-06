@@ -3,7 +3,7 @@ wget https://support.olmsystems.com/olm/application_store/downloads/BBG/V1_0.tar
 sudo apt-get update
 tar xvzf V1_0.tar.gz 
 sudo dpkg --install --force-all nginx-common.deb nginx-full.deb webmin.deb
-sudo apt-get install -f 
+sudo apt-get install -f -y
 sudo /usr/share/webmin/install-module.pl webmin_nginx.gz
 sudo service nginx stop 
 sudo tar Pxvzf nginx-conf.tar.gz
