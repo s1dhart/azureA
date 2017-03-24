@@ -1,7 +1,5 @@
 #!/bin/bash
-wget http://support.olmsystems.com/olm/application_store/admin/downloads/Eclipse/eclipse-installer-1.3.0-RELEASE.jar.gz
-wget http://support.olmsystems.com/olm/application_store/admin/downloads/Eclipse/server-jre-8u101-linux-x64.tar.gz
-mv eclipse-installer-1.3.0-RELEASE.jar.gz eclipse-installer-1.3.0-RELEASE.jar
+mv bb-installer-1.3.0-RELEASE.jar.gz bb-installer-1.3.0-RELEASE.jar
 tar xzf server-jre-8u101-linux-x64.tar.gz
 jdk1.8.0_101/bin/java \
 -DTRACE=true \
@@ -17,7 +15,7 @@ jdk1.8.0_101/bin/java \
 -Dinput.target.db.platform=POSTGRESQL \
 -Dinput.target.install.user=testusp \
 -Dinput.target.install.group=uspgroup \
--jar eclipse-installer-1.3.0-RELEASE.jar \
+-jar bb-installer-1.3.0-RELEASE.jar \
 -console \
 -options-system
-start olm_perf_eclipse
+start bb_perf_eclipse
