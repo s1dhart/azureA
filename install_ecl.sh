@@ -14,7 +14,7 @@ sudo java \
 -Dinput.target.db.platform=POSTGRESQL \
 -Dinput.target.install.user=autouser \
 -Dinput.target.install.group=autogroup \
--jar /home/sid/eclipse-installer-1.3.0-SNAPSHOT.jar \
+-jar /home/sid/bb-installer-1.3.0-SNAPSHOT.jar \
 -console \
 -options-system
-sudo start olm_live_eclipse
+sudo start bb_live_eclipse
